@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Accordion from "./components/Accordion";
+import Search from "./components/Search";
+import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
-function App() {
+const App = () => {
+  //For Accordion
+  const items = [
+    {
+      title: 'What is React?"',
+      content: "React is a frontend JS framework",
+    },
+    {
+      title: "How does React work?",
+      content: "React uses components, props and state",
+    },
+    {
+      title: "What is advanced React?",
+      content: "Hooks, Redux and Router",
+    },
+  ];
+
+  //For Dropdown
+  const options = [
+    { label: "Red Color", value: "red" },
+    { label: "Blue Color", value: "blue" },
+    { label: "Green Color", value: "green" },
+  ];
+
+  //state control for dropdown
+  const [selected, setSelected] = useState(options[0]);
+  //use to show why eventhandler needed to be cleaned up
+  // const [showDropdown, setShowDropdown] = useState(true);
+
+  //<Accordion items={items} />
+  //<Search />;
+
+  return <Translate />;
+
+  /** restore full return method for dropdown 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <button onClick={() => setShowDropdown(!showDropdown)}>
+        Toggle Dropdown
+      </button>
+      {showDropdown ? (
+        <Dropdown
+          selected={selected}
+          onSelectedChange={setSelected}
+          options={options}
+        />
+      ) : null}
     </div>
   );
-}
+*/
+};
 
 export default App;
